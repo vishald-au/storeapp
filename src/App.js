@@ -1,5 +1,6 @@
-import { Box, Container, Grid, Paper } from '@material-ui/core';
+import { Box, Container, Grid } from '@material-ui/core';
 import Sidebar from './Sidebar'
+import Pages from './Pages'
 
 function App() {
   return (
@@ -7,10 +8,10 @@ function App() {
         <Box className='frame'>
           <Grid container>
           <Grid item xs={4}>
-                <Sidebar />
+               {/*  <Sidebar /> */}
             </Grid>
-            <Grid item xs={8}>
-              <Paper className='equalHeight' elevation={0} square>TEST</Paper>
+            <Grid item xs={8} className='bgArea'>
+              <Pages />
             </Grid>
           </Grid>
         </Box>

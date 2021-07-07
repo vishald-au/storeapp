@@ -13,7 +13,20 @@ $text-color: #000000;
   flex-direction: row;
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+}
 
+::-webkit-scrollbar-track {
+  background: transparent;
+  box-shadow: none;
+  border: 0;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background-color: rgb(0, 0, 0);
+}
+/* 
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -31,12 +44,10 @@ code {
     monospace;
 }
 
-
-
 #root {
   @include flex-full;
-}
-
+} */
+/* 
 .borderArea {
   border-radius: 20px;
   overflow: hidden;
@@ -49,25 +60,57 @@ code {
   background: $bg-color2;
 }
 
-.equalHeight {
-  // min-height: 500px;
-  background-color: $bg-color2 !important;
+.bgArea {
+  min-height: 500px;
   padding: 10px;
-}
-
-.equalHeight.navArea {
-  background-color: white !important;
+  background: linear-gradient(340deg, rgba(207,207,207,.3) 0%, rgba(207,207,207,.3) 30%, rgba(255,255,255,0) 30%, rgba(255,255,255,0) 100%);;
 }
 
 .changePosition {position: relative;}
-
 .changeDrawer .MuiDrawer-paper {
   position: absolute;
   height: -webkit-fill-available;
   min-height: 500px;
-  padding: 10px;
-  width: 90%;
+  padding: 0px;
+  width: 100%;
 }
+.sidebarArea {padding: 10px;}
+ */
+
+
+.customSwitchColor {}
+.customBrown {background-color: wheat !important;}
+.customGrey {background-color: rgb(105, 105, 105) !important;}
+.customLight {background-color: rgb(236, 236, 236) !important;}
+.customDark {background-color: rgb(26, 26, 26) !important;color:white;}
+.customWhite {background-color: rgb(255, 255, 255) !important;}
+
+.sizeMin.selected:hover,
+.sizeMin.selected{
+  border: 0 !important;
+  box-shadow: none;
+}
+
+.sizeMin {
+  border-radius: 50px !important;
+  height: 45px;
+  padding: 0 !important;
+  width: 45px;
+  min-width: inherit !important;
+  margin-right: 5px !important;
+  border: 2px solid rgba(255, 255, 255, .5) !important;
+}
+
+.customSliderDark {color:rgb(82, 82, 51) !important;}
+.customDark {
+  color:rgb(255, 255, 255) !important;
+  background: rgb(0, 0, 0) !important;
+}
+.customWhite {
+  color:rgb(0, 0, 0) !important;
+  background: white !important;
+}
+
 
 @media (max-width:1280px) {
 
@@ -75,7 +118,5 @@ code {
     border-radius: 0;
     border: 0;
   }
-
-
 
 }

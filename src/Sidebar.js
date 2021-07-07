@@ -4,8 +4,10 @@ const Sidebar = () => {
     return (
       <div className='changePosition'>
            <Drawer variant="permanent" anchor="left" className='changeDrawer'>
-                <div>Sidebar</div>
-                <div><p>
+                 
+                <div className='sidebarArea'>
+                    <h3>Sidebar</h3>
+                    <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet massa at odio commodo sagittis id sit amet arcu. Quisque vestibulum nunc vel elit vulputate egestas at in arcu. Praesent luctus mi sodales turpis viverra placerat. Vestibulum congue ex sed bibendum tempor. Aliquam ultricies risus sit amet ligula iaculis, vitae tincidunt lectus placerat. Etiam turpis velit, blandit sit amet ullamcorper vel, molestie sed dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque laoreet ex a auctor semper. Pellentesque dolor eros, dignissim at vestibulum quis, varius at ipsum. Nunc at iaculis magna, aliquet rhoncus erat. Phasellus imperdiet, leo in malesuada suscipit, lacus lorem auctor leo, in congue massa massa vel risus.
 <br/>
 <br/>
