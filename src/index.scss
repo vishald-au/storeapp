@@ -48,9 +48,20 @@ code {
   @include flex-full;
 }
 
+.frame {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-content: center;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 
 .borderArea {
   border-radius: 20px;
+  margin-left:-10vw;
+  width: calc(100% - 10vw) !important;
 //  overflow: hidden;
   min-height: 500px;
   background: white;
@@ -77,10 +88,19 @@ code {
 }
 .sidebarArea {padding: 10px;}
 
-
+.applyFlex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start;
+  height: 480px;
+  width: 100%;
+}
 
 .customSwitchColor {}
-.customBrown {background-color: wheat !important;}
+.customBrown {background-color: rgb(109, 15, 23) !important;}
 .customGrey {background-color: rgb(105, 105, 105) !important;}
 .customLight {background-color: rgb(236, 236, 236) !important;}
 .customDark {background-color: rgb(26, 26, 26) !important;color:white;}
@@ -132,6 +152,7 @@ code {
   width: 50vw !important;
   height: 70vh !important;
   margin-left:-20vw;
+  background: transparent !important;
 }
 
 @media (max-width:760px) {

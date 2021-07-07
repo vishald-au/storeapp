@@ -9,19 +9,19 @@ const Pages = () => {
     const marks = [
         {
             value: 6,
-            label: 'Small'
+            label: '600e'
         },
         {
             value: 8,
-            label: 'Medium'
+            label: '800e'
         },
         {
             value: 10,
-            label: 'Large'
+            label: '1000e'
         },
         {
             value: 12,
-            label: 'xLarge'
+            label: 'maXe'
         }
     ]
 
@@ -100,7 +100,8 @@ const Pages = () => {
 
                 <div className='applyFlex'>
                     <div className='applyFlex1'>
-                        <h2>Product</h2>
+                        <h2>eScotter</h2>
+                        <p></p>
                         <div className='prizeArea'>Price $25</div>
                         <div className='customizeArea'>Customize < Switch size='small' checked={checkedSwitch} onChange={handleSwitch} /></div>
                     </div>
@@ -119,7 +120,7 @@ const Pages = () => {
                                 />
                             </div>
                             <div className='colorArea'>
-                                <Tooltip title="Brown">
+                                <Tooltip title="Electric Red">
                                     <Button variant="contained" className={color1 ? 'customBrown sizeMin selected' : 'customBrown sizeMin'} onClick={(e) => handleColor('1')}></Button>
                                 </Tooltip>
                                 <Tooltip title="Grey">
