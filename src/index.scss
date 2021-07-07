@@ -23,6 +23,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: $bg-color;
   color: $text-color;
+  font-size: 13px;
 }
 
 code {
@@ -39,7 +40,7 @@ code {
 .borderArea {
   border-radius: 20px;
   overflow: hidden;
-  // min-height: 500px;
+  min-height: 500px;
   background: white;
   padding: 0 !important;
   margin: 0 !important;
@@ -51,8 +52,30 @@ code {
 .equalHeight {
   // min-height: 500px;
   background-color: $bg-color2 !important;
+  padding: 10px;
 }
 
 .equalHeight.navArea {
   background-color: white !important;
+}
+
+.changePosition {position: relative;}
+
+.changeDrawer .MuiDrawer-paper {
+  position: absolute;
+  height: -webkit-fill-available;
+  min-height: 500px;
+  padding: 10px;
+  width: 90%;
+}
+
+@media (max-width:1280px) {
+
+  .borderArea { 
+    border-radius: 0;
+    border: 0;
+  }
+
+
+
 }
