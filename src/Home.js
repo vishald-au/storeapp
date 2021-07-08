@@ -2,11 +2,13 @@ import { Box, Container, Grid } from '@material-ui/core';
 import Pages from './Pages'
 import { IconButton, Menu, MenuItem, Button } from '@material-ui/core'
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 import LocalMallIcon from '@material-ui/icons/LocalMall';
 
-function Home() {
+function Home({ moveLogin }) {
+
+
 
   const [anchorEl, setAnchorEl] = useState();
   const open = Boolean(anchorEl);
@@ -33,7 +35,7 @@ const handleCounter = () => {
   return (
     <Container maxWidth="md">
       <Box className='frame'>
-        <Grid container className='borderArea'>
+        <Grid container className='borderArea'>{moveLogin ? 'pass' : 'no'}
         {/* <div className='fullTextBack'><h1>BEAN</h1></div> */}
         <Grid item xs={12} className='navHead'>
         
