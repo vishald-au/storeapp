@@ -4,41 +4,29 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { useState } from 'react'
 
 
-const Pages = () => {
+const Pages = ({ handleCounter, cartCounter }) => {
 
     const marks = [
         {
             value: 6,
-            label: '600e'
+            label: '6e'
         },
         {
             value: 8,
-            label: '800e'
+            label: '8e'
         },
         {
             value: 10,
-            label: '1000e'
+            label: '10e'
         },
         {
             value: 12,
-            label: 'maXe'
+            label: 'Xe'
         }
     ]
 
-    const options = [
-        'Home',
-        'Shop',
-        'Contact'
-    ]
 
-    const [anchorEl, setAnchorEl] = useState();
-    const open = Boolean(anchorEl);
-    const handleClick = (e) => {
-        setAnchorEl(e.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+
 
     const handleSwitch = (e) => {
         setCheckedSwitch(e.target.checked)
@@ -83,26 +71,14 @@ const Pages = () => {
 
 
             <div>
-                <div className='smallMenu'>
-                    <IconButton onClick={handleClick}>
-                        <MoreVertIcon />
-                    </IconButton>
-                    <Menu
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
-                    >
-                        {options.map((menu, index) => (
-                            <MenuItem key={index} className='menuLi' onClick={handleClose}>{menu}</MenuItem>
-                        ))}
-                    </Menu>
-                </div>
+                
 
                 <div className='applyFlex'>
                     <div className='applyFlex1'>
-                        <h2>eScotter</h2>
-                        <p></p>
-                        <div className='prizeArea'>Price $25</div>
+                    <div className='prizeArea'>Price $25</div>
+                        <h2>Lorem ipsum</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec neque neque. Integer metus nulla, interdum in congue non, semper sit amet mi. Duis vel faucibus nulla. Vivamus mattis ipsum et mauris imperdiet elementum</p>
+                        
                         <div className='customizeArea'>Customize < Switch size='small' checked={checkedSwitch} onChange={handleSwitch} /></div>
                     </div>
                     {checkedSwitch &&
@@ -136,10 +112,8 @@ const Pages = () => {
 
                     <div className='cartArea'>
                         <ButtonGroup variant="contained" aria-label="contained primary button group">
-                            <Button className='customDark' onClick={() => setCheckout(checkout + 1)}>Add to Cart</Button>
-                            <Tooltip title="View Cart">
-                                <Button className='customWhite'><LocalMallIcon /> {checkout > 0 && '(' + checkout + ')'}</Button>
-                            </Tooltip>
+                            <Button className='customDark' onClick={() => handleCounter()}>Add to Cart</Button>
+                           
                         </ButtonGroup>
                     </div>
                 </div>

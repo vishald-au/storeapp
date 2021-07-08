@@ -3,8 +3,6 @@ $bg-color2: #e6e6e6;
 $text-color: #000000;
 
 @mixin flex-full {
-  height: 100vh;
-  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,6 +44,8 @@ code {
 
 #root {
   @include flex-full;
+  height: 100vh;
+  width: 100vw;
 }
 
 .frame {
@@ -57,27 +57,52 @@ code {
   align-items: center;
 }
 
+.navHead {
+  position: relative;
+}
 
-.borderArea {
+/* .borderArea {
+  position: relative;
   border-radius: 20px;
   margin-left:-10vw;
-  width: calc(100% - 10vw) !important;
-//  overflow: hidden;
   min-height: 500px;
   background: white;
   padding: 20px !important;
   margin: 0 !important;
   box-shadow: 22px 10px 52px rgba(190, 190, 190,.7);
   border: 4px solid white;
-  background: radial-gradient(circle at -40% 50%, rgba(221,221,221,1) 0%, rgba(221,221,221,1) 60%, #f2f2f2 60%, #f2f2f2 100%);
-  
-}
+   background: radial-gradient(circle at -50% 50%, #eaeaea 0%, #eaeaea 50%, #f3f3f3 50%, #f3f3f3 100%);
+} */
 
-.bgArea {
+/* .bgArea {
   min-height: 500px;
  // background: linear-gradient(340deg, rgba(207,207,207,.3) 0%, rgba(207,207,207,.3) 30%, rgba(255,255,255,0) 30%, rgba(255,255,255,0) 100%);;
+} */
+
+.footerRight {
+  float: right;
 }
 
+.revertIcon {
+  transform: scaleX(-1);
+}
+
+
+
+.fullTextBack {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 40px);
+  @include flex-full;
+
+  h1 {
+    font-size: 15rem;
+    color: rgba(0,0,0,.03);
+    letter-spacing: 2rem;
+    padding: 0;
+    margin: 0;
+  }
+}
 .changePosition {position: relative;}
 .changeDrawer .MuiDrawer-paper {
   position: absolute;
@@ -98,8 +123,8 @@ code {
   height: 480px;
   width: 100%;
 }
-
-.customSwitchColor {}
+ 
+ 
 .customBrown {background-color: rgb(109, 15, 23) !important;}
 .customGrey {background-color: rgb(105, 105, 105) !important;}
 .customLight {background-color: rgb(236, 236, 236) !important;}
@@ -139,8 +164,8 @@ code {
 .colorArea {}
 .smallMenu {
   position: absolute;
-  right: -10px;
-  top: -20px;
+  right: -15px;
+  top: -15px;
 }
 .sliderArea {max-width: 200px;}
 
@@ -149,11 +174,11 @@ code {
 }
 
 .test model-viewer {
-  width: 50vw !important;
-  height: 70vh !important;
-  margin-left:-20vw;
+  width: 100% !important;
+  height: 90% !important;
+  // margin-left:-20vw;
   background: transparent !important;
-}
+}          
 
 @media (max-width:760px) {
 

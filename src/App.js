@@ -1,27 +1,59 @@
-import { Box, Container, Grid } from '@material-ui/core';
-import Sidebar from './Sidebar'
-import Pages from './Pages'
+import GoogleLogin from 'react-google-login';
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-router-dom";
 
-function App() {
 
-  return (
-    <Container maxWidth="md">
-      <Box className='frame'>
-        <Grid container className='borderArea'>
-          <Grid item xs={6} className='test'>test
-             <model-viewer src="ElectricScooter.glb" disable-zoom alt="3d" ar ar-modes="webxr scene-viewer quick-look" environment-image="neutral" auto-rotate
-              interaction-prompt="none"
-              shadow-intensity="1" shadow-softness="1"
-              auto-rotate-delay="0" rotation-per-second="500%"
-              camera-controls></model-viewer>
-          </Grid>
-          <Grid item xs={6} className='bgArea'>
-            <Pages />
-          </Grid>
-        </Grid>
-      </Box>
-    </Container>
-  );
+
+
+const Login = () => {
+
+    let history = useHistory();
+      
+
+    const [ move, setMove] = useState(false)
+
+    useEffect(() => {
+        move && history.push('/home');
+    }, [move])
+
+    const responseGoogle = (res) => {
+        console.log(res);
+        setMove(true)
+      }
+    
+      const errorGoogle = (err) => {
+          console.log(err);
+      } 
+
+      const handlePush = () => {
+        history.push('/home');
+      }
+      
+    return (
+        <div>
+             <Router>
+             <Link to="/">LOGIN</Link>
+             <Link to="/home">HOME</Link>
+             <button onClick={() => handlePush()}>PUSH</button>
+             <Switch>
+                <Route exact path="/">
+                            <GoogleLogin
+                                clientId="355753126343-icpj43hvttb9u7ib1bm92j8ovqsid85a.apps.googleusercontent.com"
+                                buttonText="Login"
+                                onSuccess={responseGoogle}
+                                onFailure={errorGoogle}
+                                cookiePolicy={'single_host_origin'}
+                            />
+
+                    </Route>
+                    <Route exact path="/home">
+                        <div>Hello!</div>
+                    </Route>
+                </Switch>
+            
+            </Router>
+        </div>
+    )
 }
 
-export default App;
+export default Login
