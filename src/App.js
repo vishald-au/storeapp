@@ -5,46 +5,52 @@ import axios from 'axios';
 const App = () => {
 
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
+    
+    const [ localToken, setLocalToken] = useState()
+    const [ showMessage, setShowMessage] = useState()
 
     const responseGoogle = (res) => {
-        console.log(res)
         localStorage.setItem('token', res.accessToken)
         localStorage.setItem('tokenid', res.tokenId)
+        setLocalToken(res.tokenId)
     }
     const errorGoogle = (err) => {
         console.log(err);
     }
 
     const handleTokenVerify = () => {
-        axios.get('https://oauth2.googleapis.com/tokeninfo?id_token=' + localStorage.getItem('tokenid') ).then(
-            (res) => {
-                console.log('success google response')
-                console.log(res)
-            })
-            .catch(
-                (err) => {
-                    console.log('error google response')
-                    console.log(err)
-                }
-            )
+
+   
+            axios.get('https://oauth2.googleapis.com/tokeninfo?id_token=' + localStorage.getItem('tokenid') ).then(
+                (res) => {
+                    console.log('success google response')
+                    console.log(res)
+                    setShowMessage(res.status)
+                })
+                .catch(
+                    (err) => {
+                        console.log('error google response')
+                        console.log(err)
+                        setShowMessage(err.status)
+                    }
+                )
+        
     }
     const handleTokenLocalClear = () => {
         localStorage.clear('token')
         localStorage.clear('tokenid')
+        setLocalToken('')
         console.log('all cleared')
     }
-
-  
-
     
     return (
         <div className='container'>
         <div className='row'>
         <div className='col-12'>
-         Local Token: {localStorage.getItem('token')}
-         <br /><br />
-         Local Token Id: {localStorage.getItem('tokenid')}
-
+                {showMessage === 200 ? '200 success' : 'try again...'}
+                <br />
+                <br />
+                {localStorage.getItem('tokenid') ? 'true' : 'false'}
         </div>
         <div className='col-12'>
             <div className='p-1'>
@@ -58,7 +64,7 @@ const App = () => {
             />
             </div>
             <div className='p-1'><buttom onClick={() => handleTokenVerify()} className='btn btn-secondary'>Verify Token</buttom></div>
-            <div className='p-1'><buttom onClick={() => handleTokenLocalClear()} className='btn btn-danger'>Clear Local Token</buttom></div>
+            <div className='p-1'><buttom onClick={() => handleTokenLocalClear()} className='btn btn-danger'>Clear Tokens</buttom></div>
         </div>
         </div>
         </div>
