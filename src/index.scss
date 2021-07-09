@@ -41,6 +41,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.text-right {text-align: right;}
+.fixfix {
+  position: fixed;
+  left:0;
+  top:0;
+  width: 100%;
+}
+
+.usertext {
+  float: right;
+}
+
+.card-img-top {
+  max-width: 50px;
+  border-radius: 50px;
+}
+
+
 
 #root {
   @include flex-full;
@@ -61,18 +79,32 @@ code {
   position: relative;
 }
 
+.linkColor {
+  color: #000;
+  text-decoration: none;
+}
+
 .borderArea-white {
   position: relative;
   border-radius: 20px;
   margin-left:-10vw;
   min-height: 500px;
   background: white;
-  padding: 20px !important;
+  // padding: 20px !important;
   margin: 0 !important;
   box-shadow: 22px 10px 52px rgba(190, 190, 190,.7);
   border: 4px solid white;
   background: radial-gradient(circle at -50% 50%, #eaeaea 0%, #eaeaea 50%, #f3f3f3 50%, #f3f3f3 100%);
   width: 80vw;
+  @include flex-full;
+  overflow: hidden;
+}
+
+.new-dark {
+  background: rgb(54, 54, 54);
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
   @include flex-full
 }
 .borderArea-dark {

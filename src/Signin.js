@@ -17,7 +17,7 @@ const Signin = ({ Redirect }) => {
     }
  
     return (
-        <div className='borderArea-dark'>
+        <div className='new-dark'>
             {localStorage.getItem('token') ? <Redirect to='/dashboard' /> : 
                 <GoogleLogin
                     className='google-login'

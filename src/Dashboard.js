@@ -1,21 +1,25 @@
 import { useEffect } from 'react';
-import Logout from './Logout';
+import UserBar from './UserBar';
 
 
 
-const Dashboard = ({ handleTokenLocalClear, checkLogin }) => {
+const Dashboard = ({ handleTokenLocalClear, checkLogin, tempToken, userData }) => {
 
     useEffect(() => {
         checkLogin();
     },)
 
     return (
-        <div className='borderArea-white'>
-            <div>
-            dash
-            <Logout handleTokenLocalClear={handleTokenLocalClear} />
-            </div>
-        
+        <div>
+          
+{tempToken && <div>
+
+    Dashboard...
+
+    <UserBar userData={userData} handleTokenLocalClear={handleTokenLocalClear} />
+
+    </div>}
+          
         </div>
     )
 }

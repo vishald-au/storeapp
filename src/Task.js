@@ -1,7 +1,7 @@
-import Logout from './Logout';
+import UserBar from './UserBar';
 import { useEffect } from 'react';
 
-const Task = ({handleTokenLocalClear, checkLogin}) => {
+const Task = ({ handleTokenLocalClear, checkLogin, tempToken, userData }) => {
 
     useEffect(() => {
         checkLogin();
@@ -10,11 +10,15 @@ const Task = ({handleTokenLocalClear, checkLogin}) => {
  
 
     return (
-        <div className='borderArea-white'>
-            <div>
+        <div>
+             {tempToken &&  <div>
             Task...
-            <Logout handleTokenLocalClear={handleTokenLocalClear} />
-            </div>
+            
+            
+            <UserBar userData={userData} handleTokenLocalClear={handleTokenLocalClear} />
+
+
+            </div>}
         
         </div>
     )

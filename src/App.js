@@ -4,15 +4,19 @@ import Dashboard from './Dashboard'
 import Singin from './Signin'
 import Task from './Task'
 import axios from 'axios';
+import Logout from './Logout';
 
 
 const Login = () => {
 
 
     const [ tempToken , setTempToken] = useState()
+    const [ userData , setUserData] = useState()
 
     const handleTokenLocalClear = () => {
         localStorage.clear()
+        setTempToken()
+        setUserData()
         window.location.href = "/";
     }
 
@@ -25,6 +29,11 @@ const Login = () => {
                     console.log('success google response')
                     localStorage.setItem('loginStatus', true)
                     console.log(res)
+                    setUserData({
+                        name: res.data.name,
+                        email: res.data.email,
+                        img: res.data.picture
+                    })
                     setTempToken(true)
                 })
                 .catch(
@@ -42,28 +51,29 @@ const Login = () => {
  
 
                 <Router>
-                    {!localStorage.getItem('loginStatus') && <Link to='/'>Login</Link>}
-                    <br />
-                    <Link to='/dashboard'>Dashboard</Link><br />
-                    <Link to='/task'>Task</Link><br />
+                    {!localStorage.getItem('loginStatus') && <Link className='linkColor m-1' to='/'>Login</Link>}
+                    <Link className='linkColor m-1' to='/dashboard'>Dashboard</Link> 
+                    <Link className='linkColor m-1' to='/task'>Task</Link> 
 
-                    <br />
-                    <Switch>
-                        <Route exact path='/'>
-                            <Singin Redirect={Redirect} />
-                        </Route>
-                        <Route path='/dashboard'>
-                            <Dashboard checkLogin={checkLogin} handleTokenLocalClear={handleTokenLocalClear} />
-                        </Route>
-                        <Route path='/task'>
-                            <Task checkLogin={checkLogin} handleTokenLocalClear={handleTokenLocalClear} />
-                        </Route>
-                    </Switch>
+                    <div className='borderArea-white'>
+                        <Switch>
+                            <Route exact path='/'>
+                                <Singin Redirect={Redirect} />
+                            </Route>
+                            <Route path='/dashboard'>
+                                <Dashboard userData={userData} tempToken={tempToken} checkLogin={checkLogin} handleTokenLocalClear={handleTokenLocalClear} />
+                            </Route>
+                            <Route path='/task'>
+                                <Task userData={userData} tempToken={tempToken} checkLogin={checkLogin} handleTokenLocalClear={handleTokenLocalClear} />
+                            </Route>
+                        </Switch>
+                    </div>
                 </Router>
 
+               {/*  <Logout handleTokenLocalClear={handleTokenLocalClear} /> */}
 
         
-        </div >
+        </div>
     )
 }
 
