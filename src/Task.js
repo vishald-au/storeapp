@@ -1,18 +1,18 @@
-import { useEffect } from 'react';
 import Logout from './Logout';
+import { useEffect } from 'react';
 
-
-
-const Dashboard = ({ handleTokenLocalClear, checkLogin }) => {
+const Task = ({handleTokenLocalClear, checkLogin}) => {
 
     useEffect(() => {
         checkLogin();
     },)
 
+ 
+
     return (
         <div className='borderArea-white'>
             <div>
-            dash
+            Task...
             <Logout handleTokenLocalClear={handleTokenLocalClear} />
             </div>
         
@@ -20,4 +20,4 @@ const Dashboard = ({ handleTokenLocalClear, checkLogin }) => {
     )
 }
 
-export default Dashboard
+export default Task

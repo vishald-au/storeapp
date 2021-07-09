@@ -1,57 +1,68 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import Dashboard from './Dashboard'
-import GoogleLogin from 'react-google-login';
+import Singin from './Signin'
+import Task from './Task'
+import axios from 'axios';
 
 
 const Login = () => {
 
-    const [ dash, setDash] = useState(0)
-    const [ localToken, setLocalToken] = useState()
 
-    const responseGoogle = (res) => {
-        localStorage.setItem('token', res.accessToken)
-        localStorage.setItem('tokenid', res.tokenId)
-        setLocalToken(res.tokenId)
-    }
-    const errorGoogle = (err) => {
-        console.log(err);
-    }
- 
+    const [ tempToken , setTempToken] = useState()
+
     const handleTokenLocalClear = () => {
-        localStorage.clear('token')
-        localStorage.clear('tokenid')
+        localStorage.clear()
         window.location.href = "/";
     }
 
+    const checkLogin = () => {
+        if (!localStorage.getItem('tokenid')) {
+            window.location.href = "/";
+        } else {
+            axios.get('https://oauth2.googleapis.com/tokeninfo?id_token=' + localStorage.getItem('tokenid') ).then(
+                (res) => {
+                    console.log('success google response')
+                    localStorage.setItem('loginStatus', true)
+                    console.log(res)
+                    setTempToken(true)
+                })
+                .catch(
+                    (err) => {
+                        console.log('error google response')
+                        console.log(err)
+                        window.location.href = "/";
+                    }
+                )
+        }
+    }
 
     return (
         <div>
+ 
 
-            <Router>
-                {/* <Link to='/'>Login</Link><br />
-                <Link to='/dashboard'>Dashboard</Link><br /> */}
+                <Router>
+                    {!localStorage.getItem('loginStatus') && <Link to='/'>Login</Link>}
+                    <br />
+                    <Link to='/dashboard'>Dashboard</Link><br />
+                    <Link to='/task'>Task</Link><br />
 
-                <br />
-                <Switch>
-                    <Route exact path='/'>
-                  {localStorage.getItem('token') ? <Redirect to='/dashboard' /> : 
-                        <GoogleLogin
-                            className='btn btn-warning'
-                            clientId='355753126343-icpj43hvttb9u7ib1bm92j8ovqsid85a.apps.googleusercontent.com'
-                            buttonText='Login'
-                            onSuccess={responseGoogle}
-                            onFailure={errorGoogle}
-                            cookiePolicy={'single_host_origin'}
-                        />}
-                    </Route>
-                    <Route path='/dashboard'>
-                        <Dashboard handleTokenLocalClear={handleTokenLocalClear}/>
-                    </Route>
-                </Switch>
-            </Router>
+                    <br />
+                    <Switch>
+                        <Route exact path='/'>
+                            <Singin Redirect={Redirect} />
+                        </Route>
+                        <Route path='/dashboard'>
+                            <Dashboard checkLogin={checkLogin} handleTokenLocalClear={handleTokenLocalClear} />
+                        </Route>
+                        <Route path='/task'>
+                            <Task checkLogin={checkLogin} handleTokenLocalClear={handleTokenLocalClear} />
+                        </Route>
+                    </Switch>
+                </Router>
 
 
+        
         </div >
     )
 }
