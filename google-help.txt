@@ -1,0 +1,27 @@
+https://developers.google.com/identity/protocols/oauth2/web-server#httprest_5
+
+Google's OAuth 2.0 endpoint is at 
+https://accounts.google.com/o/oauth2/v2/auth
+
+client_id
+
+HTTP GET examples
+
+GET /drive/v2/files HTTP/1.1
+Host: www.googleapis.com
+Authorization: Bearer access_token
+Content-Type: application/x-www-form-urlencoded
+
+GET https://www.googleapis.com/drive/v2/files?access_token=access_token
+
+GET https://accounts.google.com/o/oauth2/v2/auth?
+  client_id=your_client_id&
+  response_type=code&
+  state=state_parameter_passthrough_value&
+  scope=https%3A//www.googleapis.com/auth/drive.file&
+  redirect_uri=https%3A//oauth2.example.com/code&
+  prompt=consent&
+  include_granted_scopes=true
+
+
+  https://developers.google.com/identity/sign-in/web/backend-auth

@@ -1,65 +1,68 @@
+import React, { useState } from 'react';
 import GoogleLogin from 'react-google-login';
-import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
-import Home from './Home'
-import axios from 'axios'
-import { useHistory } from "react-router-dom";
+import axios from 'axios';
 
+const App = () => {
 
-const Login = () => {
-
-    let history = useHistory();
-
-
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
 
     const responseGoogle = (res) => {
-        localStorage.setItem('token', res.tokenId);
-        // console.log(res.tokenId);
+        console.log(res)
+        localStorage.setItem('token', res.accessToken)
+        localStorage.setItem('tokenid', res.tokenId)
     }
-
     const errorGoogle = (err) => {
         console.log(err);
     }
 
+    const handleTokenVerify = () => {
+        axios.get('https://oauth2.googleapis.com/tokeninfo?id_token=' + localStorage.getItem('tokenid') ).then(
+            (res) => {
+                console.log('success google response')
+                console.log(res)
+            })
+            .catch(
+                (err) => {
+                    console.log('error google response')
+                    console.log(err)
+                }
+            )
+    }
+    const handleTokenLocalClear = () => {
+        localStorage.clear('token')
+        localStorage.clear('tokenid')
+        console.log('all cleared')
+    }
 
+  
 
-
-
+    
     return (
-        <div>
+        <div className='container'>
+        <div className='row'>
+        <div className='col-12'>
+         Local Token: {localStorage.getItem('token')}
+         <br /><br />
+         Local Token Id: {localStorage.getItem('tokenid')}
 
-            <Router>
-                <Switch>
-                    <Route exact path='/'>
-
-                        <GoogleLogin
-                            clientId='355753126343-icpj43hvttb9u7ib1bm92j8ovqsid85a.apps.googleusercontent.com'
-                            buttonText='Login'
-                            onSuccess={responseGoogle}
-                            onFailure={errorGoogle}
-                            cookiePolicy={'single_host_origin'}
-                        />
-
-                    </Route>
-                    <Route path='/home'>
-                        <Home />
-                    </Route>
-                </Switch>
-                <br />
-                <br />
-                <button onClick={() => localStorage.clear()}>Clear Token</button>
-                <br />
-                <button onClick={() => console.log(localStorage.getItem('token'))}>Print Token</button>
-                <br />
-                <br />
-                <Link to='/'>Back</Link>
-                <br />
-                <Link to='/home'>Home</Link>
-            </Router>
-
-
-        </div >
+        </div>
+        <div className='col-12'>
+            <div className='p-1'>
+            <GoogleLogin
+                className='btn btn-warning'
+                clientId='355753126343-icpj43hvttb9u7ib1bm92j8ovqsid85a.apps.googleusercontent.com'
+                buttonText='Get Token'
+                onSuccess={responseGoogle}
+                onFailure={errorGoogle}
+                cookiePolicy={'single_host_origin'}
+            />
+            </div>
+            <div className='p-1'><buttom onClick={() => handleTokenVerify()} className='btn btn-secondary'>Verify Token</buttom></div>
+            <div className='p-1'><buttom onClick={() => handleTokenLocalClear()} className='btn btn-danger'>Clear Local Token</buttom></div>
+        </div>
+        </div>
+        </div>
     )
 }
 
-export default Login
+export default App
