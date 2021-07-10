@@ -5,13 +5,14 @@ import Singin from './Signin'
 import Task from './Task'
 import axios from 'axios';
 import Logout from './Logout';
+import { Box, Container, Grid } from '@material-ui/core';
 
 
 const Login = () => {
 
 
-    const [ tempToken , setTempToken] = useState()
-    const [ userData , setUserData] = useState()
+    const [tempToken, setTempToken] = useState()
+    const [userData, setUserData] = useState()
 
     const handleTokenLocalClear = () => {
         localStorage.clear()
@@ -24,7 +25,7 @@ const Login = () => {
         if (!localStorage.getItem('tokenid')) {
             window.location.href = "/";
         } else {
-            axios.get('https://oauth2.googleapis.com/tokeninfo?id_token=' + localStorage.getItem('tokenid') ).then(
+            axios.get('https://oauth2.googleapis.com/tokeninfo?id_token=' + localStorage.getItem('tokenid')).then(
                 (res) => {
                     console.log('success google response')
                     localStorage.setItem('loginStatus', true)
@@ -47,33 +48,38 @@ const Login = () => {
     }
 
     return (
-        <div>
- 
+        <Container maxWidth="md">
 
-                <Router>
-                    {!localStorage.getItem('loginStatus') && <Link className='linkColor m-1' to='/'>Login</Link>}
-                    <Link className='linkColor m-1' to='/dashboard'>Dashboard</Link> 
-                    <Link className='linkColor m-1' to='/task'>Task</Link> 
+            <Router>
+                {!localStorage.getItem('loginStatus') && <Link className='linkColor m-1' to='/'>Login</Link>}
+                <Link className='linkColor m-1' to='/dashboard'>Dashboard</Link>
+                <Link className='linkColor m-1' to='/task'>Task</Link>
 
-                    <div className='borderArea-white'>
-                        <Switch>
-                            <Route exact path='/'>
-                                <Singin Redirect={Redirect} />
-                            </Route>
-                            <Route path='/dashboard'>
-                                <Dashboard userData={userData} tempToken={tempToken} checkLogin={checkLogin} handleTokenLocalClear={handleTokenLocalClear} />
-                            </Route>
-                            <Route path='/task'>
-                                <Task userData={userData} tempToken={tempToken} checkLogin={checkLogin} handleTokenLocalClear={handleTokenLocalClear} />
-                            </Route>
-                        </Switch>
-                    </div>
-                </Router>
 
-               {/*  <Logout handleTokenLocalClear={handleTokenLocalClear} /> */}
+                <div className='borderArea-white'>
 
-        
-        </div>
+
+                    <Switch>
+                        <Route exact path='/'>
+                            <Singin Redirect={Redirect} />
+                        </Route>
+
+                        <Route path='/dashboard'>
+                            <Dashboard userData={userData} tempToken={tempToken} checkLogin={checkLogin} handleTokenLocalClear={handleTokenLocalClear} />
+                        </Route>
+                        <Route path='/task'>
+                            <Task userData={userData} tempToken={tempToken} checkLogin={checkLogin} handleTokenLocalClear={handleTokenLocalClear} />
+                        </Route>
+
+                    </Switch>
+
+
+                </div>
+            </Router>
+
+            <Logout handleTokenLocalClear={handleTokenLocalClear} />
+
+        </Container>
     )
 }
 

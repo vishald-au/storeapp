@@ -71,14 +71,14 @@ const Pages = ({ handleCounter, cartCounter }) => {
 
 
             <div>
-                
+
 
                 <div className='applyFlex'>
                     <div className='applyFlex1'>
-                    <div className='prizeArea'>Price $25</div>
+                        <div className='prizeArea'>Price $25</div>
                         <h2>Lorem ipsum</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec neque neque. Integer metus nulla, interdum in congue non, semper sit amet mi. Duis vel faucibus nulla. Vivamus mattis ipsum et mauris imperdiet elementum</p>
-                        
+
                         <div className='customizeArea'>Customize < Switch size='small' checked={checkedSwitch} onChange={handleSwitch} /></div>
                     </div>
                     {checkedSwitch &&
@@ -113,7 +113,7 @@ const Pages = ({ handleCounter, cartCounter }) => {
                     <div className='cartArea'>
                         <ButtonGroup variant="contained" aria-label="contained primary button group">
                             <Button className='customDark' onClick={() => handleCounter()}>Add to Cart</Button>
-                           
+
                         </ButtonGroup>
                     </div>
                 </div>

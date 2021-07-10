@@ -5,7 +5,7 @@ const Task = ({ handleTokenLocalClear, checkLogin, tempToken, userData }) => {
 
     useEffect(() => {
         checkLogin();
-    },)
+    },[])
 
  
 
