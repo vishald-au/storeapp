@@ -1,19 +1,15 @@
 import { useState, useEffect } from 'react';
 import UserBar from './UserBar';
-import Pages from './Pages'
 
 
 const Dashboard = ({ handleTokenLocalClear, checkLogin, tempToken, userData }) => {
 
     useEffect(() => {
         checkLogin();
-    }, []) // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
-    const [cartCounter, setCartCounter] = useState(2)
 
-    const handleCounter = () => {
-        setCartCounter(cartCounter + 1)
-    }
 
     return (
         <div className='container-fluid'>
@@ -34,7 +30,7 @@ const Dashboard = ({ handleTokenLocalClear, checkLogin, tempToken, userData }) =
                 </div>
                 <div className='col-6'>
 
-                    {/* <Pages handleCounter={handleCounter} cartCounter={cartCounter} /> */}
+                    raw
 
                 </div>
 
