@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import UserBar from './UserBar';
-import { Box, Container, Grid } from '@material-ui/core';
 import Pages from './Pages'
 
 
@@ -8,7 +7,7 @@ const Dashboard = ({ handleTokenLocalClear, checkLogin, tempToken, userData }) =
 
     useEffect(() => {
         checkLogin();
-    }, [])
+    }, []) // eslint-disable-next-line react-hooks/exhaustive-deps
 
     const [cartCounter, setCartCounter] = useState(2)
 
@@ -35,7 +34,7 @@ const Dashboard = ({ handleTokenLocalClear, checkLogin, tempToken, userData }) =
                 </div>
                 <div className='col-6'>
 
-                    <Pages handleCounter={handleCounter} cartCounter={cartCounter} />
+                    {/* <Pages handleCounter={handleCounter} cartCounter={cartCounter} /> */}
 
                 </div>
 

@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import Dashboard from './Dashboard'
 import Singin from './Signin'
 import Task from './Task'
 import axios from 'axios';
 import Logout from './Logout';
-import { Box, Container, Grid } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 
 
 const Login = () => {
