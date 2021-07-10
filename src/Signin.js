@@ -22,7 +22,7 @@ const Signin = ({ Redirect }) => {
             {localStorage.getItem('token') ? <Redirect to='/dashboard' /> :
                 <GoogleLogin
                     className='google-login'
-                    clientId='355753126343-icpj43hvttb9u7ib1bm92j8ovqsid85a.apps.googleusercontent.com'
+                    clientId='998983159820-0602akq04mlcbjpjhjgcopv9377eg1hc.apps.googleusercontent.com'
                     buttonText='Login'
                     onSuccess={responseGoogle}
                     onFailure={errorGoogle}
