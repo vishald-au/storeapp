@@ -1,6 +1,4 @@
-import { Switch, Slider, ButtonGroup, Button, Tooltip, IconButton, Menu, MenuItem } from '@material-ui/core'
-import LocalMallIcon from '@material-ui/icons/LocalMall';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Switch, Slider, ButtonGroup, Button, Tooltip } from '@material-ui/core'
 import { useState } from 'react'
 
 
@@ -36,8 +34,6 @@ const Pages = ({ handleCounter, cartCounter, handleColor, color1, color2, color3
 
 
     const [checkedSwitch, setCheckedSwitch] = useState(true)
-
-    const [checkout, setCheckout] = useState(0)
 
     return (
 

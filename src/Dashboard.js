@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import UserBar from './UserBar';
 import Pages from './Pages';
 
 
