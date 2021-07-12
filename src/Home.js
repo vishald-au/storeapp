@@ -42,7 +42,7 @@ function Home() {
     <Container maxWidth="md">
       <Box className='frame'>
         <Grid container className='borderArea'>test
-          {/* <div className='fullTextBack'><h1>BEAN</h1></div> */}
+          <div className='fullTextBack'><h1>BEAN</h1></div>
           <Grid item xs={12} className='navHead'>
 
             <div className='smallMenu'>

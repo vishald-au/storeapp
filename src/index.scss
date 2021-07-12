@@ -58,6 +58,28 @@ code {
   border-radius: 50px;
 }
 
+.prizeArea2 {
+  font-size: 32px;
+  padding: 10px;
+  font-weight: 600;
+  color: #000;
+  /* text-align: right; */
+
+  span {
+    font-size: 15px;
+  }
+}
+
+.colorSwitch {
+  color: #d4d4d4;
+
+  .MuiIconButton-label {
+    color: rgb(182, 97, 97);
+  }
+  .MuiSwitch-track {
+    background-color: rgb(97, 39, 39) !important;
+  }
+}
 
 
 #root {
@@ -188,7 +210,7 @@ code {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: flex-start;
   align-content: flex-start;
   height: 480px;
@@ -228,9 +250,7 @@ code {
   background: white !important;
 }
 .pagesArea {position: relative;}
-.pagesArea span{
-  font-size: 11px !important;
-}
+
 
 .colorArea {}
 .smallMenu {
@@ -238,7 +258,7 @@ code {
   right: -15px;
   top: -15px;
 }
-.sliderArea {max-width: 200px;}
+.sliderArea {max-width: 250px;}
 
 .menuLi {
   font-size: 13px !important;

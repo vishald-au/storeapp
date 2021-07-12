@@ -51,9 +51,9 @@ const Login = () => {
         <Container maxWidth="md">
 
             <Router>
-                {!localStorage.getItem('loginStatus') && <Link className='linkColor m-1' to='/'>Login</Link>}
-                <Link className='linkColor m-1' to='/dashboard'>Dashboard</Link>
-                <Link className='linkColor m-1' to='/task'>Task</Link>
+                {/*      {!localStorage.getItem('loginStatus') && <Link className='linkColor m-1' to='/'>Login</Link>}
+                 <Link className='linkColor m-1' to='/dashboard'>Dashboard</Link>  
+                   <Link className='linkColor m-1' to='/task'>Task</Link> */}
 
 
                 <div className='borderArea-white'>
@@ -67,9 +67,9 @@ const Login = () => {
                         <Route path='/dashboard'>
                             <Dashboard userData={userData} tempToken={tempToken} checkLogin={checkLogin} handleTokenLocalClear={handleTokenLocalClear} />
                         </Route>
-                        <Route path='/task'>
+                        {/* <Route path='/task'>
                             <Task userData={userData} tempToken={tempToken} checkLogin={checkLogin} handleTokenLocalClear={handleTokenLocalClear} />
-                        </Route>
+                        </Route> */}
 
                     </Switch>
 
@@ -77,7 +77,7 @@ const Login = () => {
                 </div>
             </Router>
 
-            <Logout handleTokenLocalClear={handleTokenLocalClear} />
+            {/*   <Logout handleTokenLocalClear={handleTokenLocalClear} /> */}
 
         </Container>
     )

@@ -4,7 +4,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { useState } from 'react'
 
 
-const Pages = ({ handleCounter, cartCounter }) => {
+const Pages = ({ handleCounter, cartCounter, handleColor, color1, color2, color3 }) => {
 
     const marks = [
         {
@@ -33,33 +33,7 @@ const Pages = ({ handleCounter, cartCounter }) => {
         console.log(checkedSwitch)
     }
 
-    const [color1, setColor1] = useState(false)
-    const [color2, setColor2] = useState(false)
-    const [color3, setColor3] = useState(false)
 
-    const handleColor = (props) => {
-        console.log(props)
-        if (props === '1') {
-            console.log('color 1 selected')
-            setColor1(true)
-            setColor2(false)
-            setColor3(false)
-        }
-        if (props === '2') {
-            console.log('color 2 selected')
-            setColor2(true)
-            setColor1(false)
-            setColor3(false)
-        }
-        if (props === '3') {
-            console.log('color 3 selected')
-            setColor3(true)
-            setColor2(false)
-            setColor1(false)
-        }
-
-        console.log(props)
-    }
 
     const [checkedSwitch, setCheckedSwitch] = useState(true)
 
@@ -73,13 +47,13 @@ const Pages = ({ handleCounter, cartCounter }) => {
             <div>
 
 
-                <div className='applyFlex'>
+                <div className='applyFlex p-3'>
                     <div className='applyFlex1'>
-                        <div className='prizeArea'>Price $25</div>
-                        <h2>Lorem ipsum</h2>
+                        <div className='prizeArea2'><h1><span>$</span>725</h1></div>
+
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec neque neque. Integer metus nulla, interdum in congue non, semper sit amet mi. Duis vel faucibus nulla. Vivamus mattis ipsum et mauris imperdiet elementum</p>
 
-                        <div className='customizeArea'>Customize < Switch size='small' checked={checkedSwitch} onChange={handleSwitch} /></div>
+                        <div className='customizeArea'>Customize < Switch className='colorSwitch' checked={checkedSwitch} onChange={handleSwitch} /></div>
                     </div>
                     {checkedSwitch &&
                         <div className='applyFlex2'>
@@ -112,7 +86,7 @@ const Pages = ({ handleCounter, cartCounter }) => {
 
                     <div className='cartArea'>
                         <ButtonGroup variant="contained" aria-label="contained primary button group">
-                            <Button className='customDark' onClick={() => handleCounter()}>Add to Cart</Button>
+                            <Button className='customDark'>Add to Cart</Button>
 
                         </ButtonGroup>
                     </div>
